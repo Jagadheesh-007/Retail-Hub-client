@@ -1,61 +1,89 @@
-/* src/ProductDashboard.css */
+/* src/Dashboard.css */
 .dashboard-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  .product-form {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Form layout in row order */
+.product-form {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  .product-form input,
-  .product-form button {
+}
+
+.product-form input,
+.product-form button {
     padding: 10px;
     font-size: 16px;
-  }
-  
-  .product-list {
+    flex: 1; /* Adjust inputs to take equal width */
+    min-width: 120px; /* Minimum width for smaller screens */
+}
+
+/* Align product list items in a row order */
+.product-list {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .product-item {
+}
+
+.product-item {
     display: flex;
     align-items: center;
     margin: 20px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    flex-wrap: wrap; /* Allows items to wrap */
-  }
-  
-  .progress-bar-container {
-    width: 80px; /* Fixed width for circular progress */
-    height: 80px; /* Fixed height for circular progress */
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+/* Center-align and set fixed size for the circular progress container */
+.progress-bar-container {
+    width: 80px;
+    height: 80px;
     margin-right: 20px;
-  }
-  
-  .product-info {
-    flex-grow: 1; /* Take remaining space */
-  }
-  
-  .product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-actions {
     display: flex;
     gap: 10px;
-  }
-  
-  @media (max-width: 600px) {
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
     .product-form {
-      flex-direction: column;
+        flex-direction: column;
     }
-  
+
     .product-item {
-      flex-direction: column;
-      align-items: flex-start; /* Align items to the start */
+        flex-direction: column;
+        align-items: flex-start;
     }
-  }
-  
+}

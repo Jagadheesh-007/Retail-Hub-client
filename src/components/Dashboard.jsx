@@ -1,9 +1,8 @@
-// src/ProductDashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'; // Import buildStyles
 import 'react-circular-progressbar/dist/styles.css';
-import './/Dashboard.css'; // Import the CSS file
+import './Dashboard.css'; // Import the CSS file
 
 const ProductDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -55,8 +54,19 @@ const ProductDashboard = () => {
     setPrice(0);
   };
 
+  // Function to determine the color based on quantity
+  const getCircleColor = (quantity) => {
+    if (quantity >= 80) {
+      return '#4caf50'; // Green
+    } else if (quantity >= 50) {
+      return '#ff9800'; // Orange
+    } else {
+      return '#f44336'; // Red
+    }
+  };
+
   return (
-    <div className="dashboard-container">
+    <div style={{ padding: '20px' }}>
       <h1>Product Dashboard</h1>
       <form onSubmit={addProduct} className="product-form">
         <input
@@ -99,6 +109,11 @@ const ProductDashboard = () => {
                 value={product.productQuantity} 
                 maxValue={100} // Adjust according to your needs
                 text={`${product.productQuantity}`} 
+                styles={buildStyles({
+                  pathColor: getCircleColor(product.productQuantity), // Set color based on quantity
+                  textColor: '#000', // Color of the text inside the circle
+                  trailColor: '#d6d6d6', // Color of the trail
+                })}
               />
             </div>
             <div className="product-info">
@@ -111,6 +126,28 @@ const ProductDashboard = () => {
           </li>
         ))}
       </ul>
+
+      {/* Product Table */}
+      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+        <thead>
+          <tr>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>ID</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Name</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Quantity (%)</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((item) => (
+            <tr key={`table-${item._id}`}>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.userId}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productName}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productQuantity}%</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>${item.price.toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
