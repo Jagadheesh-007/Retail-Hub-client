@@ -1,0 +1,61 @@
+/* src/ProductDashboard.css */
+.dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .product-form input,
+  .product-form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    flex-wrap: wrap; /* Allows items to wrap */
+  }
+  
+  .progress-bar-container {
+    width: 80px; /* Fixed width for circular progress */
+    height: 80px; /* Fixed height for circular progress */
+    margin-right: 20px;
+  }
+  
+  .product-info {
+    flex-grow: 1; /* Take remaining space */
+  }
+  
+  .product-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .product-form {
+      flex-direction: column;
+    }
+  
+    .product-item {
+      flex-direction: column;
+      align-items: flex-start; /* Align items to the start */
+    }
+  }
+  
