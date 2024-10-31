@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'; // Import buildStyles
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import './Dashboard.css'; // Import the CSS file
+import './Dashboard.css';
 
 const ProductDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -54,19 +54,14 @@ const ProductDashboard = () => {
     setPrice(0);
   };
 
-  // Function to determine the color based on quantity
   const getCircleColor = (quantity) => {
-    if (quantity >= 80) {
-      return '#4caf50'; // Green
-    } else if (quantity >= 50) {
-      return '#ff9800'; // Orange
-    } else {
-      return '#f44336'; // Red
-    }
+    if (quantity >= 80) return '#4caf50';
+    if (quantity >= 50) return '#ff9800';
+    return '#f44336';
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px'}}>
       <h1>Product Dashboard</h1>
       <form onSubmit={addProduct} className="product-form">
         <input
@@ -100,50 +95,56 @@ const ProductDashboard = () => {
         <button type="submit">{editingProductId ? 'Update Product' : 'Add Product'}</button>
       </form>
 
-      <h2>Product List</h2>
-      <ul className="product-list">
-        {products.map(product => (
-          <li key={product._id} className="product-item">
-            <div className="progress-bar-container">
-              <CircularProgressbar 
-                value={product.productQuantity} 
-                maxValue={100} // Adjust according to your needs
-                text={`${product.productQuantity}`} 
+      <h2>Circular Display-Product</h2>
+      <div style={{ display: 'flex', gap: '35px', flexWrap: 'wrap', marginBottom: '20px' }}>
+        {products.map((product) => (
+          <div key={product._id} style={{
+            width: '150px',
+            textAlign: 'center',
+            border: '2px solid #313131',
+            padding: '10px',
+            borderRadius: '8px',
+            backgroundColor: '#ffffff',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+        }}>
+              <CircularProgressbar
+                value={product.productQuantity}
+                maxValue={100}
+                text={`${product.productQuantity}%`}
                 styles={buildStyles({
-                  pathColor: getCircleColor(product.productQuantity), // Set color based on quantity
-                  textColor: '#000', // Color of the text inside the circle
-                  trailColor: '#d6d6d6', // Color of the trail
+                  pathColor: getCircleColor(product.productQuantity),
+                  textColor: '#000',
+                  trailColor: '#d6d6d6',
                 })}
               />
-            </div>
+    
             <div className="product-info">
-              <strong>{product.userId}</strong> - {product.productName} - ${product.price.toFixed(2)}
-              <div className="product-actions">
-                <button onClick={() => editProduct(product)}>Edit</button>
-                <button onClick={() => deleteProduct(product._id)}>Delete</button>
+              <strong>{product.productName}</strong>
+              <div style={{ marginTop: '10px' }}>
+                <button onClick={() => editProduct(product)}style={{ marginRight: '5px', backgroundColor: '#0bdeb1', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px' }}>Edit</button>
+                <button onClick={() => deleteProduct(product._id)} style={{ backgroundColor: '#950e42', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px' }}>Delete</button>
               </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
-
-      {/* Product Table */}
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+      </div>
+      <h2>Product List</h2>
+      <table className="product-table">
         <thead>
           <tr>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>ID</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Name</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Quantity (%)</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Price</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity (%)</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           {products.map((item) => (
             <tr key={`table-${item._id}`}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.userId}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productName}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productQuantity}%</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>${item.price.toFixed(2)}</td>
+              <td>{item.userId}</td>
+              <td>{item.productName}</td>
+              <td>{item.productQuantity}%</td>
+              <td>${item.price.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>

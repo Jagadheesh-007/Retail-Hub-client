@@ -1,14 +1,22 @@
 /* src/Dashboard.css */
 .dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
+  
     padding: 20px;
-    background-color: #f5f5f5;
+    background-image: url('/src/assets/dash.jpg'); 
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     color: #333;
 }
-
+body, html {
+    color:  #333;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(241, 238, 238, 0.1);
+    background-image: url('/src/assets/dash.jpg');
+    
+  }
 /* Form layout in row order */
 .product-form {
     display: flex;
@@ -57,23 +65,21 @@
     flex-grow: 1;
 }
 
-.product-actions {
-    display: flex;
-    gap: 10px;
-}
 
 /* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    
 }
 
 th,
 td {
-    border: 1px solid #ddd;
+    border: 2px solid #1d1c1c;
     padding: 8px;
     text-align: center;
+    color:rgb(4, 4, 4);
 }
 
 /* Responsive design */
