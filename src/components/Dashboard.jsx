@@ -4,6 +4,9 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './Dashboard.css';
 
+import logo from '/src/assets/retail.png'; // Import your logo image
+
+
 const ProductDashboard = () => {
   const [products, setProducts] = useState([]);
   const [userId, setUserId] = useState('');
@@ -60,7 +63,41 @@ const ProductDashboard = () => {
     return '#f44336';
   };
 
+  const handleLogout = () => {
+    // Implement logout functionality here
+    console.log("Logged out");
+  };
+
   return (
+    <>
+      {/* Navbar */}
+      <nav style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '10px 20px',
+        backgroundColor: 'rgba(20, 19, 19, 0.529)'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={logo} alt="Logo" style={{ width: '40px', marginRight: '10px' }} />
+          <h2 style={{ color: 'white', margin: 0 }}>SMART RETAIL HUB</h2>
+        </div>
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '8px 15px',
+            backgroundColor: '#333',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Logout
+        </button>
+      </nav>
+
+    <div className="background-image"></div>
     <div style={{ padding: '20px'}}>
       <h1>Product Dashboard</h1>
       <form onSubmit={addProduct} className="product-form">
@@ -150,6 +187,7 @@ const ProductDashboard = () => {
         </tbody>
       </table>
     </div>
+  </>
   );
 };
 
