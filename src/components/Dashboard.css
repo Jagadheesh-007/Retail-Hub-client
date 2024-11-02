@@ -7,6 +7,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     color: #333;
 }
+
 .background-image {
     position: fixed;
     top: 0;
@@ -25,6 +26,8 @@ body, html {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(241, 238, 238, 0.1);
+      height: auto; /* Allows the page to grow with content */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
     
   }
 /* Form layout in row order */
@@ -35,7 +38,14 @@ body, html {
     margin-bottom: 20px;
     
 }
-
+ h1{
+    font-size: 60px;
+    color: rgb(32, 33, 33);
+ }
+ h2{
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+ }
 .product-form input
 {
     padding: 10px;
@@ -45,13 +55,23 @@ body, html {
     border: 2px solid #ffffff;
     border-radius: 8px;
     background-color: #333;
+    color:#ffffff;
 }
 .product-form button {
-    padding: 10px;
+    padding: 10px 15px; /* Adjust padding for a better touch target */
     font-size: 16px;
-    flex: 1; /* Adjust inputs to take equal width */
+    border: 2px solid #0f0f0fa8;
+    flex: 1; /* Allow the button to take equal width with inputs */
     min-width: 120px; /* Minimum width for smaller screens */
-  
+    background-color: #0c5d42; /* Set a background color */
+    color: white; /* Ensure text color is white for visibility */
+    border-radius: 8px; /* Consistent border radius with inputs */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.product-form button:hover {
+    background-color: #14ffa9; /* Darker shade on hover */
 }
 
 /* Align product list items in a row order */
@@ -91,7 +111,7 @@ body, html {
 table {
     width: 100%;
     margin-top: 20px;
-    background-color: rgb(232, 238, 232);
+    background-color: rgb(255, 255, 255);
     border-radius: '16px';
 }
 
@@ -119,39 +139,79 @@ td {
         align-items: flex-start;
     }
 }
-/* Navbar styling */
+.button-group {
+    display: flex; /* Use flexbox for the button group */
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap in smaller viewports */
+}
+
+.button-group button {
+    background-color: #59e5c7; /* Default button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 8px 12px; /* Adjust padding for better touch area */
+    border-radius: 4px; /* Consistent border radius */
+    cursor: pointer; /* Pointer cursor on hover */
+    flex: 1; /* Allow buttons to grow */
+    min-width: 100px; /* Minimum width for buttons */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.button-group button:hover {
+    background-color: #098875; /* Darker shade on hover for Edit button */
+}
+
+.button-group .delete-button {
+    background-color: #e53858; /* Specific background for Delete button */
+}
+
+.button-group .delete-button:hover {
+    background-color: #7c0b33; /* Darker shade on hover for Delete button */
+}
+
+/* Dashboard.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    position: fixed;
+    position: fixed; /* Fix the navbar at the top */
     top: 0;
-    width: 100%;
-    z-index: 10;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(20, 19, 19, 0.8); /* Slightly darker for better visibility */
+    z-index: 1000; 
   }
   
-  .navbar-logo {
-    font-size: 1.5em;
-    font-weight: bold;
+  .navbar img {
+    width: 40px;
+    margin-right: 10px;
   }
   
-  .navbar-login {
-    background-color: #4CAF50;
+  .navbar h2 {
+    color: white;
+    margin: 0;
+  }
+  
+  .navbar button {
+    padding: 8px 15px;
+    background-color: #333;
     color: white;
     border: none;
-    padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration: none;
-    font-size: 1em;
   }
   
-  .navbar-login:hover {
-    background-color: #29eadd;
+  @media (max-width: 600px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .navbar h2 {
+      margin-bottom: 10px;
+    }
+    .navbar button {
+      width: 100%;
+    }
   }
-  
   
