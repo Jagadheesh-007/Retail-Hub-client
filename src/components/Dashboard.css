@@ -21,12 +21,13 @@
   }
 body, html {
     color:  #000000;
-    padding: 0px;
+    
+    margin: -1%;
     width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(241, 238, 238, 0.1);
-      height: auto; /* Allows the page to grow with content */
+    height: auto; /* Allows the page to grow with content */
     overflow-x: hidden; /* Prevents horizontal scrolling */
     
   }

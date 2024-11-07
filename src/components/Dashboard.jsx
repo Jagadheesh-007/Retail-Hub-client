@@ -112,6 +112,7 @@ const ProductDashboard = () => {
 </nav>
       <div className="background-image"></div>
       <div style={{ padding: '20px'}}>
+        <br></br>
         <h1>Product Dashboard</h1>
         <form onSubmit={addProduct} className="product-form">
           <input
